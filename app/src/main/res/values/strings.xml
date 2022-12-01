@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MonkeyApp_Mario</string>
+    <string name="app_title">MonkeyFilm App</string>
+    <string name="email">Correo</string>
+    <string name="password">Contraseña</string>
+    <string name="forgot_password">¿No recuerdas la contraseña?</string>
+    <string name="sign_up_question">¿No tienes aún cuenta?</string>
+    <string name="sign_up">Regístrate.</string>
+    <string name="log_in">Entrar</string>
+    <string name="logo">Logo</string>
+    <string name="close_app">Cerrar la APP</string>
+    <string name="show_password">Mostrar la contraseña</string>
+</resources>
