@@ -23,6 +23,7 @@ import androidx.compose.ui.window.Dialog
 @Composable
 fun MyToolBar() {
     TopAppBar(
+        backgroundColor = MaterialTheme.colors.surface,
         title = { Text(text = "MonkeyFilms") },
         navigationIcon = {
             IconButton(onClick = {}) {
@@ -44,9 +45,8 @@ fun MyToolBar() {
 @Composable
 fun MySimpleToolBar() {
     TopAppBar(
-        title = { Text(text = "MonkeyFilms") },
-
-
+        title = { Text(text = "MonkeyFilms", color = Color.White) },
+        backgroundColor = MaterialTheme.colors.surface
         )
 
 }

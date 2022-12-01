@@ -33,35 +33,40 @@ import espasa.mario.t_final_mario_espasa.composables.MyToolBar
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Favorite(navController: NavController,filmViewModel: FilmViewModel,loginViewModel: LoginViewModel) {
+fun Favorite(
+    navController: NavController,
+    filmViewModel: FilmViewModel,
+    loginViewModel: LoginViewModel
+) {
     Scaffold(
         topBar = { MyToolBar() },
         bottomBar = { MyDownMenu(navController) }
     ) {
-        ContentF(navController,filmViewModel,loginViewModel)
+        ContentF(navController, filmViewModel, loginViewModel)
     }
 }
 
 @Composable
-fun ContentF(navController: NavController, filmViewModel: FilmViewModel, loginViewModel: LoginViewModel) {
+fun ContentF(
+    navController: NavController,
+    filmViewModel: FilmViewModel,
+    loginViewModel: LoginViewModel
+) {
     //val scrollState = rememberScrollState()
 
-    Column(modifier = Modifier
-        //.verticalScroll(scrollState)
-        .fillMaxWidth()) {
+    Column(
+        modifier = Modifier
+            //.verticalScroll(scrollState)
+            .fillMaxWidth()
+    ) {
         MySheetsF(films = filmViewModel.listaPelis, navController)
     }
 }
 
 
-
-
-
 //-------------------------------
 // CREACION DE CELDAS
 //-------------------------------
-
-
 
 
 @Composable
@@ -74,7 +79,9 @@ fun MySheetF(film: Film, navController: NavController) {
             .padding(8.dp)
             .clickable {
                 expanded = !expanded
-            }) {
+            }
+            .background(MaterialTheme.colors.primaryVariant)
+        ) {
             Image(
                 painter = painterResource(
                     id = when (film.catel) {
@@ -136,9 +143,11 @@ fun MySheetF(film: Film, navController: NavController) {
 
         }
     } else {
-        Column(modifier = Modifier.clickable {
-            expanded = !expanded
-        }) {
+        Column(modifier = Modifier
+            .clickable {
+                expanded = !expanded
+            }
+            .background(MaterialTheme.colors.primaryVariant)) {
             Row(Modifier.fillMaxWidth()) {
                 Image(
                     painter = painterResource(id = R.drawable.blinders),
@@ -172,7 +181,11 @@ fun MySheetF(film: Film, navController: NavController) {
                     Column() {
                         //MAS INFO
                         IconButton(onClick = {
-                            navController.navigate(route = AppScreens.DetailsActivity.createRoute(film.id))
+                            navController.navigate(
+                                route = AppScreens.DetailsActivity.createRoute(
+                                    film.id
+                                )
+                            )
                         }) {
                             Icon(
                                 modifier = Modifier.size(20.dp),
@@ -213,9 +226,12 @@ fun MySheetF(film: Film, navController: NavController) {
 
 @Composable
 fun MySheetsF(films: LiveData<List<Film>>, navController: NavController) {
-    LazyColumn{
-        items(films.value!!.size){ index ->
-            if(films.value!![index].favorite)MySheetF(film = films.value!![index], navController = navController)
+    LazyColumn {
+        items(films.value!!.size) { index ->
+            if (films.value!![index].favorite) MySheetF(
+                film = films.value!![index],
+                navController = navController
+            )
         }
     }
 }

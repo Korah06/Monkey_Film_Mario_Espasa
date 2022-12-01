@@ -39,9 +39,11 @@ fun Home(
     Scaffold(topBar = { MyToolBar() },
         bottomBar = { MyDownMenu(navController) },
         modifier = Modifier.fillMaxSize(),
-        floatingActionButton = {FloatingActionButton(onClick = {navController.navigate(AppScreens.CreateScreen.route)}) {
-            Icon(imageVector = Icons.Default.Add, contentDescription = "añadir pelicula")
-        }}
+        floatingActionButton = {
+            FloatingActionButton(onClick = { navController.navigate(AppScreens.CreateScreen.route) }) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = "añadir pelicula")
+            }
+        }
     ) {
         ContentH(navController, filmViewModel = filmViewModel)
     }
@@ -71,11 +73,14 @@ fun MySheet(film: Film, navController: NavController) {
 
     if (!expanded) {
 
-        Row(modifier = Modifier
-            .padding(8.dp)
-            .clickable {
-                expanded = !expanded
-            }) {
+        Row(
+            modifier = Modifier
+                .padding(8.dp)
+                .clickable {
+                    expanded = !expanded
+                }
+                .background(MaterialTheme.colors.primaryVariant)
+        ) {
             Image(
                 painter = painterResource(
                     id = when (film.catel) {
@@ -108,15 +113,15 @@ fun MySheet(film: Film, navController: NavController) {
 
                 Column() {
                     //MAS INFO
-                        IconButton(onClick = {
-                            navController.navigate(route = AppScreens.DetailsActivity.createRoute(film.id))
-                        }) {
-                            Icon(
-                                modifier = Modifier.size(20.dp),
-                                imageVector = Icons.Filled.Search,
-                                contentDescription = "Browse"
-                            )
-                        }
+                    IconButton(onClick = {
+                        navController.navigate(route = AppScreens.DetailsActivity.createRoute(film.id))
+                    }) {
+                        Icon(
+                            modifier = Modifier.size(20.dp),
+                            imageVector = Icons.Filled.Search,
+                            contentDescription = "Browse"
+                        )
+                    }
                     //LIKE ICON
                     IconButton(onClick = {
                         film.favorite = !film.favorite
@@ -137,9 +142,11 @@ fun MySheet(film: Film, navController: NavController) {
 
         }
     } else {
-        Column(modifier = Modifier.clickable {
-            expanded = !expanded
-        }) {
+        Column(modifier = Modifier
+            .clickable {
+                expanded = !expanded
+            }
+            .background(MaterialTheme.colors.primaryVariant)) {
             Row(Modifier.fillMaxWidth()) {
                 Image(
                     painter = painterResource(id = R.drawable.blinders),
@@ -173,7 +180,11 @@ fun MySheet(film: Film, navController: NavController) {
                     Column() {
                         //MAS INFO
                         IconButton(onClick = {
-                            navController.navigate(route = AppScreens.DetailsActivity.createRoute(film.id))
+                            navController.navigate(
+                                route = AppScreens.DetailsActivity.createRoute(
+                                    film.id
+                                )
+                            )
                         }) {
                             Icon(
                                 modifier = Modifier.size(20.dp),
@@ -215,11 +226,11 @@ fun MySheet(film: Film, navController: NavController) {
 @Composable
 fun MySheets(films: LiveData<List<Film>>, navController: NavController) {
 
-    LazyColumn{
-        items(films.value!!.size){ index ->  
+    LazyColumn {
+        items(films.value!!.size) { index ->
             MySheet(film = films.value!![index], navController = navController)
         }
-        
+
         item { Spacer(modifier = Modifier.height(50.dp)) }
     }
 

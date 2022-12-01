@@ -78,7 +78,7 @@ fun ContentC(navController: NavController, filmViewModel: FilmViewModel) {
             onClick = {
                 Toast.makeText(context, "Aun no se encuentra en funcionamiento", Toast.LENGTH_SHORT).show()
             },
-            modifier = Modifier.width(100.dp),
+            modifier = Modifier.width(150.dp),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color(0xFF47978E9),
                 disabledBackgroundColor = Color(0xFF78C48F9),

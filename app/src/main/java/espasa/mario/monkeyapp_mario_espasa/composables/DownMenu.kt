@@ -1,11 +1,9 @@
 package espasa.mario.t_final_mario_espasa.composables
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
@@ -17,8 +15,8 @@ import espasa.mario.examen_mario_espasa.navigation.AppScreens
 
 @Composable
 fun MyDownMenu(navController: NavController) {
-    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Bottom) {
-        BottomNavigation() {
+    Row(Modifier.fillMaxWidth().background(MaterialTheme.colors.surface), verticalAlignment = Alignment.Bottom) {
+        BottomNavigation(backgroundColor = MaterialTheme.colors.surface,) {
 
             BottomNavigationItem(
                 selected = false,

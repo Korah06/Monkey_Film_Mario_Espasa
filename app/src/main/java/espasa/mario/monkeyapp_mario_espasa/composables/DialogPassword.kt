@@ -59,8 +59,13 @@ fun ForgotPassword(showDialog: Boolean, dissmissDialog: () -> Unit) {
                                 .fillMaxWidth()
                                 .padding(top = 10.dp)
                         ) {
-                            OutlinedTextField(value = emailValue.value,
-                                onValueChange = { emailValue.value = it })
+                            TextField(value = emailValue.value,
+                                onValueChange = { emailValue.value = it },
+                                colors = TextFieldDefaults.textFieldColors(
+                                    backgroundColor = Color.LightGray
+                                ),
+                                modifier = Modifier.clip(Shapes.small)
+                            )
                         }
                         Row(
                             horizontalArrangement = Arrangement.Center,

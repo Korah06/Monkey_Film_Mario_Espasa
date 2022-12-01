@@ -78,7 +78,7 @@ fun Content(
     val showDialog = rememberSaveable { mutableStateOf(false) }
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().background(MaterialTheme.colors.background),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -118,8 +118,7 @@ fun Content(
                 },
                 modifier = Modifier.width(100.dp),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color(0xFF47978E9),
-                    disabledBackgroundColor = Color(0xFF78C48F9),
+                    backgroundColor = MaterialTheme.colors.surface,
                     contentColor = Color.White,
                     disabledContentColor = Color.White
                 )
@@ -137,7 +136,7 @@ fun Content(
                     text = "¿Aún no te has registrado?",
                     modifier = Modifier.clickable { navController.navigate(route = AppScreens.RegisterScreen.route) },
                     textDecoration = TextDecoration.Underline,
-                    color = Color.Gray
+                    color = Color.Black
                 )
 
 
@@ -152,7 +151,7 @@ fun Content(
                     text = "¿Has olvidado la contraseña?",
                     modifier = Modifier.clickable { showDialog.value = true },
                     textDecoration = TextDecoration.Underline,
-                    color = Color.Gray
+                    color = Color.Black
                 )
             }
         }
